@@ -1,22 +1,22 @@
 define proxmox::resource::kernel::bootKernel (
-	$action = $title,
-	$kernel
+    $action = $title,
+    $kernel
 ) {
-	
-	if($action == 'changekernel') {
-		file { '/var/tmp/changekernel.bash':
-			ensure => 'present',
+    
+    if($action == 'changekernel') {
+        file { '/var/tmp/changekernel.bash':
+            ensure => 'present',
             source => 'puppet:///modules/proxmox/kernel/changekernel.bash',
             mode => '755',
         } ~>
         exec { "/bin/bash /var/tmp/changekernel.bash ${kernel}":
-	    	refreshonly => true
+            refreshonly => true
         }
-	} else {
-    	file { '/var/tmp/changekernel.bash':
-			ensure => 'absent'
+    } else {
+        file { '/var/tmp/changekernel.bash':
+            ensure => 'absent'
         }
-	}
+    }
 }
 
 # Copied from http://projects.puppetlabs.com/projects/1/wiki/Kernel_Modules_Patterns
@@ -62,33 +62,33 @@ define proxmox::resources::kernel::kernel_module ($ensure) {
 }
 
 class proxmox::resources::kernel(
-	$kernel = $::proxmox::config::kernel[openvz]
+    $kernel = $::proxmox::config::kernel[openvz]
 ) {
-	
-	package { "pve-kernel-${kernel}-pve":
-		ensure => installed,
-		require => Exec['apt_update']
-	} ->
-	package { "pve-headers-${kernel}-pve":
-		ensure => $::proxmox::config::install_kernel_headers ? {
-			true => 'installed',
-			default =>'absent'
-		}
-	}
-	
-	if($kernelrelease == "${kernel}-pve") {
-		proxmox::resource::kernel::bootKernel { 'alreadybooted':
-			kernel => "${kernel}-pve"
-		}
-	} else {
-		proxmox::resource::kernel::bootKernel { 'changekernel':
-			kernel => "${kernel}-pve",
-			require => Package["pve-kernel-${kernel}-pve"]
-		}
-		if($::proxmox::config::auto_kernel_reboot) and ($kernelrelease !~ /-pve$/) {
-			exec { "/sbin/shutdown -r +5 System is rebooting because we are loading a new kernel ${kernel}-pve as requested via puppet &":
-				require => proxmox::resource::kernel::bootKernel['changekernel']
-			}
-		}
-	}
+    
+    package { "pve-kernel-${kernel}-pve":
+        ensure => installed,
+        require => Exec['apt_update']
+    } ->
+    package { "pve-headers-${kernel}-pve":
+        ensure => $::proxmox::config::install_kernel_headers ? {
+            true => 'installed',
+            default =>'absent'
+        }
+    }
+    
+    if($kernelrelease == "${kernel}-pve") {
+        proxmox::resource::kernel::bootKernel { 'alreadybooted':
+            kernel => "${kernel}-pve"
+        }
+    } else {
+        proxmox::resource::kernel::bootKernel { 'changekernel':
+            kernel => "${kernel}-pve",
+            require => Package["pve-kernel-${kernel}-pve"]
+        }
+        if($::proxmox::config::auto_kernel_reboot) and ($kernelrelease !~ /-pve$/) {
+            exec { "/sbin/shutdown -r +5 System is rebooting because we are loading a new kernel ${kernel}-pve as requested via puppet &":
+                require => proxmox::resource::kernel::bootKernel['changekernel']
+            }
+        }
+    }
 }

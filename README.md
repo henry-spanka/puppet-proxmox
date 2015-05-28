@@ -58,7 +58,7 @@ Configuration is managed by the class proxmox::params
 Only distribution supported is Debian as Proxmox VE is Debian based. Tested version is
 7 (wheezy) with Promox VE 3.3 and 3.4.
 
-## Author & Copyright
+## Author Copyright
 
 Authored by Henry Spanka <henry@myvirtualserver.de>
 Usage or distribution prohibited without permission by the author.
