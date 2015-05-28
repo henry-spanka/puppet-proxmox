@@ -1,0 +1,26 @@
+{
+  "name": "henryspanka-proxmox",
+  "version": "0.1.0",
+  "author": "Henry Spanka",
+  "summary": "Manages Proxmox Virtual Environment",
+  "license": "Apache 2.0",
+  "source": "",
+  "project_page": null,
+  "issues_url": null,
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "7"
+      ]
+    }
+  ],
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"},
+    {"name":"puppetlabs-ntp", "version_requirement":">= 3.3.0"},
+    {"name":"thias-sysctl", "version_requirement":">= 1.0.2"},
+    {"name":"example42-network", "version_requirement":">= 3.1.22"},
+    {"name":"puppetlabs-apt", "version_requirement":">= 2.0.1"}
+  ]
+}
+
