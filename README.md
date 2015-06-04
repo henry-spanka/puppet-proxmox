@@ -10,7 +10,7 @@
     * [Beginning with proxmox](#beginning-with-proxmox)
 4. [Usage - Configuration options and additional functionality](#usage)
 5. [Limitations - OS compatibility, etc.](#limitations)
-6. [Author & Copryright - Copyright notice](#author-copyright)
+6. [Author & Copyright - Copyright notice](#author-copyright)
 
 ## Overview
 
