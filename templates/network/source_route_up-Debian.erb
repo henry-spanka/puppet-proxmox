@@ -4,8 +4,8 @@
 #
 if [ "$IFACE" = "<%= @interface -%>" ]; then
 <%- (0..(@ipaddress.length-1)).each do |id| -%>
-	ip rule add from <%= @ipaddress[id] %>/<%= @netmask[id] %> table <%= @table[id] %>
-	ip route add throw <%= @ipaddress[id] %>/<%= @netmask[id] %> table <%= @table[id] %>
-	ip route add default via <%= @gateway[id] %> dev <%= @interface %> table <%= @table[id] %>
+	ip <% if @type[id] == 'route6' %>-6 <%- end -%>rule add from <%= @ipaddress[id] %>/<%= @netmask[id] %> table <%= @table[id] %>
+	ip <% if @type[id] == 'route6' %>-6 <%- end -%>route add throw <%= @ipaddress[id] %>/<%= @netmask[id] %> table <%= @table[id] %>
+	ip <% if @type[id] == 'route6' %>-6 <%- end -%>route add default via <%= @gateway[id] %> dev <%= @interface %> table <%= @table[id] %>
 <%- end -%>
 fi

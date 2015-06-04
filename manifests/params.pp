@@ -23,7 +23,7 @@ class proxmox::params {
         'pve-manager' => '3.4-6',
         'proxmox-ve-2.6.32' => '3.4-156'
     }
-    $grub2_version                  = '2.02~bpo70+6'
+    $grub2_version                  = false #2.x Version currently breaks auto reboot script e.g. '2.02~bpo70+6'
     $kernel                         = {
         'openvz' => '2.6.32-39',
         'kvm' => '3.10.0-10'
@@ -103,7 +103,8 @@ class proxmox::params {
             ipaddress => ['37.228.135.128'],
             netmask => ['255.255.255.224'],
             gateway => ['10.10.10.1'],
-            table => [10000]
+            table => [10000],
+            type => 'route'
         }*/
     }
     $source_ct_ip_interface         = '' # for example vmbr1

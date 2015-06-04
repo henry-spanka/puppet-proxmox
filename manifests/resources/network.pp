@@ -3,6 +3,7 @@ define proxmox::resources::network::add_source_route(
     $netmask,
     $gateway,
     $table,
+    $type = 'route',
     $ensure = 'present'
 ) {
     
@@ -10,6 +11,7 @@ define proxmox::resources::network::add_source_route(
     validate_array($netmask)
     validate_array($gateway)
     validate_array($table)
+    validate_array($type)
     
     $interface = $name
     
@@ -20,7 +22,7 @@ define proxmox::resources::network::add_source_route(
         group   => 'root',
         path    => "/etc/network/if-up.d/z100-source-route-${interface}",
         content => template('proxmox/network/source_route_up-Debian.erb'),
-        notify  => $network::manage_config_file_notify,
+        notify  => $network::manage_config_file_notify
     }
     file { "source-routedown-${interface}":
         ensure  => $ensure,
@@ -29,7 +31,7 @@ define proxmox::resources::network::add_source_route(
         group   => 'root',
         path    => "/etc/network/if-down.d/z100-source-route-${interface}",
         content => template('proxmox/network/source_route_down-Debian.erb'),
-        notify  => $::network::manage_config_file_notify,
+        notify  => $::network::manage_config_file_notify
     }
 }
 

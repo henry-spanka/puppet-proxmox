@@ -27,7 +27,7 @@ class proxmox (
     $source_ct_ip_interface         = $proxmox::params::source_ct_ip_interface
 ) inherits proxmox::params {
     
-    $package_versions_merged = merge($package_versions, $proxmox::params::package_versions)
+    $package_versions_merged = merge($proxmox::params::package_versions, $package_versions)
     validate_hash($package_versions_merged)
     if (is_string($grub2_version)) {
         validate_string($grub2_version)

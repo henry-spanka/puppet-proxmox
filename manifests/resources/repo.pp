@@ -27,5 +27,12 @@ class proxmox::resources::repo {
         },
     }
     
+    file { 'repo-pve-enterprise.list':
+        ensure => absent,
+        path => '/etc/apt/sources.list.d/pve-enterprise.list',
+        before => Exec['apt_update'],
+        notify => Exec['apt_update']
+    }
+    
     create_resources(proxmox::resources::repo::create, $::proxmox::config::repositories)
 }
