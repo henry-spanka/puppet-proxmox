@@ -52,6 +52,12 @@ class proxmox::resources::services {
             hasrestart => true,
             hasstatus => false,
         }
+        service { 'pvemonitord':
+            ensure => running,
+            enable => true,
+            hasrestart => true,
+            hasstatus => false,
+        }
         service { 'novncproxy':
             ensure => running,
             enable => true,
