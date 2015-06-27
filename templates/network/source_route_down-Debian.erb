@@ -2,7 +2,7 @@
 #
 ### File managed by Puppet
 #
-if [ "$IFACE" = "<%= @interface -%>" ]; then
+if [ "$IFACE" = "<%= @interface -%>" ] || [ "$IFACE" = "--all" ]; then
 <%- (0..(@ipaddress.length-1)).each do |id| -%>
 	ip <% if @type[id] == 'route6' %>-6 <%- end -%>rule del from <%= @ipaddress[id] %>/<%= @netmask[id] %> table <%= @table[id] %>
 	ip <% if @type[id] == 'route6' %>-6 <%- end -%>route del throw <%= @ipaddress[id] %>/<%= @netmask[id] %> table <%= @table[id] %>
