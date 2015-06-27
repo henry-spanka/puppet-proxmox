@@ -22,7 +22,7 @@ define proxmox::resources::network::add_source_route(
         group   => 'root',
         path    => "/etc/network/if-up.d/z100-source-route-${interface}",
         content => template('proxmox/network/source_route_up-Debian.erb'),
-        notify  => $network::manage_config_file_notify
+        notify  => $::network::manage_config_file_notify
     }
     file { "source-routedown-${interface}":
         ensure  => $ensure,
