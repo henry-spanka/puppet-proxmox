@@ -11,11 +11,11 @@ class proxmox::role::kvm_node inherits ::proxmox::role {
         } ->
         class { '::proxmox::resources::network':
         } ->
+	class { '::proxmox::resources::certificates':
+	} ->
         class { '::proxmox::resources::services':
         } ->
         class { '::proxmox::profile::kvm::configuration':
-        } ->
-        class { '::proxmox::resources::certificates':
         }
     }
 }
