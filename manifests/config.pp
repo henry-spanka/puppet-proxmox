@@ -13,6 +13,7 @@ class proxmox::config (
     $interface_configuration        = {},
     $route_configuration            = {},
     $source_routing_configuration   = {},
+    $neighbors_configuration        = {},
     $source_ct_ip_interface         = undef
 ) {
 }

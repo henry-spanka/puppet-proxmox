@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+### File managed by Puppet
+#
+if [ "$IFACE" = "<%= @interface -%>" ] || [ "$IFACE" = "--all" ]; then
+<%- (0..(@ipaddress.length-1)).each do |id| -%>
+	ip <% if @type[id] == 'ip6' %>-6 <%- end -%>neigh del <%= @ipaddress[id] %> lladdr <%= @macaddress[id] %> dev <%= @interface %>
+<%- end -%>
+fi

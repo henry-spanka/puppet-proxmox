@@ -107,5 +107,6 @@ class proxmox::params {
             type => 'route'
         }*/
     }
+    $neighbors_configuration		= {}
     $source_ct_ip_interface         = '' # for example vmbr1
 }

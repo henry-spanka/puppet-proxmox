@@ -24,6 +24,7 @@ class proxmox (
     $interface_configuration        = $proxmox::params::interface_configuration,
     $route_configuration            = $proxmox::params::route_configuration,
     $source_routing_configuration   = $proxmox::params::source_routing_configuration,
+    $neighbors_configuration        = $proxmox::params::neighbors_configuration,
     $source_ct_ip_interface         = $proxmox::params::source_ct_ip_interface
 ) inherits proxmox::params {
     
@@ -52,6 +53,7 @@ class proxmox (
     validate_hash($interface_configuration)
     validate_hash($route_configuration)
     validate_hash($source_routing_configuration)
+    validate_hash($neighbors_configuration)
     if (is_string($source_ct_ip_interface)) {
         validate_string($source_ct_ip_interface)
     } else {
@@ -76,6 +78,7 @@ class proxmox (
       interface_configuration       => $interface_configuration,
       route_configuration           => $route_configuration,
       source_routing_configuration  => $source_routing_configuration,
+      neighbors_configuration       => $neighbors_configuration,
       source_ct_ip_interface        => $source_ct_ip_interface
     }
 }
