@@ -1,6 +1,7 @@
 class proxmox::profile::openvz::configuration {
     
     $source_ct_ip_interface = $::proxmox::config::source_ct_ip_interface
+    $neighbour_devs = $::proxmox::config::neighbour_devs
     
     file { '/etc/vz':
         ensure => directory,
