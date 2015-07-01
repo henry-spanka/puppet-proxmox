@@ -2,6 +2,7 @@ define proxmox::resources::network::add_source_route(
     $ipaddress,
     $netmask,
     $gateway,
+    $iface,
     $table,
     $type = 'route',
     $ensure = 'present'
@@ -10,6 +11,7 @@ define proxmox::resources::network::add_source_route(
     validate_array($ipaddress)
     validate_array($netmask)
     validate_array($gateway)
+    validate_array($iface)
     validate_array($table)
     validate_array($type)
     
