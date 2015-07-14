@@ -15,6 +15,7 @@ class proxmox::config (
     $source_routing_configuration   = {},
     $neighbors_configuration        = {},
     $source_ct_ip_interface         = undef,
-    $neighbour_devs                 = undef
+    $neighbour_devs                 = undef,
+    $backup_configuration           = {}
 ) {
 }

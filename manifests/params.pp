@@ -110,4 +110,5 @@ class proxmox::params {
     $neighbors_configuration		= {}
     $source_ct_ip_interface         = '' # for example vmbr1
     $neighbour_devs                 = '' # for example vmbr1
+    $backup_configuration           = {}
 }

@@ -11,8 +11,10 @@ class proxmox::role::openvz_node inherits ::proxmox::role {
         } ->
         class { '::proxmox::resources::network':
         } ->
-	class { '::proxmox::resources::certificates':
-	} ->
+    	class { '::proxmox::resources::certificates':
+    	} ->
+        class { '::proxmox::resources::backups':
+        } ->
         class { '::proxmox::resources::services':
         } ->
         class { '::proxmox::profile::openvz::configuration':

@@ -26,7 +26,8 @@ class proxmox (
     $source_routing_configuration   = $proxmox::params::source_routing_configuration,
     $neighbors_configuration        = $proxmox::params::neighbors_configuration,
     $source_ct_ip_interface         = $proxmox::params::source_ct_ip_interface,
-    $neighbour_devs                 = $proxmox::params::neighbour_devs
+    $neighbour_devs                 = $proxmox::params::neighbour_devs,
+    $backup_configuration           = $proxmox::params::backup_configuration
 ) inherits proxmox::params {
     
     $package_versions_merged = merge($proxmox::params::package_versions, $package_versions)
@@ -65,6 +66,7 @@ class proxmox (
     } else {
         validate_bool($neighbour_devs)
     }
+    validate_hash($backup_configuration)
     
     if ($::osfamily != 'Debian') {
         fail('Only Debian 7(wheezy) supported')
@@ -86,6 +88,7 @@ class proxmox (
       source_routing_configuration  => $source_routing_configuration,
       neighbors_configuration       => $neighbors_configuration,
       source_ct_ip_interface        => $source_ct_ip_interface,
-      neighbour_devs               => $neighbour_devs
+      neighbour_devs                => $neighbour_devs,
+      backup_configuration          => $backup_configuration
     }
 }
