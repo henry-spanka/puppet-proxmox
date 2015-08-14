@@ -22,10 +22,10 @@
     {"name":"example42-network", "version_requirement":">= 3.1.22"},
     {"name":"puppetlabs-apt", "version_requirement":">= 2.0.1"}
   ],
-  "tags" : [
+  "tags": [
     "proxmox",
     "virtualization",
     "openvz",
-    "kvm",
+    "kvm"
   ]
 }
