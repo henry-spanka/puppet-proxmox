@@ -1,7 +1,7 @@
 {
   "name": "henryspanka-proxmox",
   "version": "0.4.1",
-  "author": "Henry Spanka",
+  "author": "henryspanka",
   "summary": "Manages Proxmox Virtual Environment",
   "license": "GPL-3.0+",
   "source": "",
