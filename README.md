@@ -61,4 +61,4 @@ Only distribution supported is Debian as Proxmox VE is Debian based. Tested vers
 ## Author Copyright
 
 Authored by Henry Spanka <henry@myvirtualserver.de>
-Usage or distribution prohibited without permission by the author.
+Licensed under GPL v3 License
