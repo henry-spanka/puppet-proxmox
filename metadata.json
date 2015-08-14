@@ -1,9 +1,9 @@
 {
   "name": "henryspanka-proxmox",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "author": "Henry Spanka",
   "summary": "Manages Proxmox Virtual Environment",
-  "license": "Apache 2.0",
+  "license": "GPL-3.0+",
   "source": "",
   "project_page": null,
   "issues_url": null,
@@ -23,4 +23,3 @@
     {"name":"puppetlabs-apt", "version_requirement":">= 2.0.1"}
   ]
 }
-
