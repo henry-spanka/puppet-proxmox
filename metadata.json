@@ -4,9 +4,9 @@
   "author": "henryspanka",
   "summary": "Manages Proxmox Virtual Environment",
   "license": "GPL-3.0+",
-  "source": "",
-  "project_page": null,
-  "issues_url": null,
+  "source": "https://github.com/henry-spanka/puppet-proxmox.git",
+  "project_page": "https://github.com/henry-spanka/puppet-proxmox",
+  "issues_url": "https://github.com/henry-spanka/puppet-proxmox/issues",
   "operatingsystem_support": [
     {
       "operatingsystem": "Debian",
