@@ -56,6 +56,9 @@ class proxmox::profile::openvz::configuration {
     sysctl { 'net.netfilter.nf_conntrack_tcp_timeout_time_wait':
         value => '30'
     } ->
+    sysctl { 'ubc.pagecache_isolation':
+        value => '1'
+    } ->
     exec { "/bin/echo 262144 > /proc/sys/fs/aio-max-nr":
         unless => "/bin/cat /proc/sys/fs/aio-max-nr | grep 262144"
     }
