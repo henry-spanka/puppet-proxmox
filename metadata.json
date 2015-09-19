@@ -1,6 +1,6 @@
 {
   "name": "henryspanka-proxmox",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "author": "henryspanka",
   "summary": "Manage and Install Proxmox Virtual Environment via Puppet",
   "license": "GPL-3.0+",
