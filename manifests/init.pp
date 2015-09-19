@@ -61,11 +61,8 @@ class proxmox (
     } else {
         validate_bool($source_ct_ip_interface)
     }
-    if (is_string($neighbour_devs)) {
-        validate_string($neighbour_devs)
-    } else {
-        validate_bool($neighbour_devs)
-    }
+    validate_hash($neighbour_devs)
+    validate_re($neighbour_devs[mode], '^detect$|^list$|^all$')
     validate_hash($backup_configuration)
     
     if ($::osfamily != 'Debian') {

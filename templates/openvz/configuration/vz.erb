@@ -27,10 +27,10 @@ VE_ROUTE_SRC_DEV="<%= @source_ct_ip_interface %>"
 #VE_ROUTE_SRC_DEV="eth0"
 
 # Controls which interfaces to send ARP requests and modify ARP tables on.
-<% if @neighbour_devs and @neighbour_devs.length > 0 -%>
-NEIGHBOUR_DEVS=<%= @neighbour_devs %>
+<% if @neighbour_devs and @neighbour_devs['mode'] == 'list' -%>
+NEIGHBOUR_DEVS=list:<%= @neighbour_devs['list'].join(' ') %>
 <% else %>
-NEIGHBOUR_DEVS=all
+NEIGHBOUR_DEVS=<%= @neighbour_devs['mode'] %>
 <% end -%>
 
 ## Fail if there is another machine in the network with the same IP
