@@ -43,8 +43,12 @@ TEMPLATE=/var/lib/vz/template
 VE_ROOT=/var/lib/vz/root/$VEID
 VE_PRIVATE=/var/lib/vz/private/$VEID
 
-## Filesystem layout for new CTs: either simfs (default) or ploop
-#VE_LAYOUT=ploop
+## Filesystem layout for new CTs
+<% if @is_ploop -%>
+VE_LAYOUT=ploop
+<% else -%>
+VE_LAYOUT=simfs
+<% end -%>
 
 ## Load vzwdog module
 VZWDOG="no"

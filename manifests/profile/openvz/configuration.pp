@@ -2,6 +2,12 @@ class proxmox::profile::openvz::configuration {
     
     $source_ct_ip_interface = $::proxmox::config::source_ct_ip_interface
     $neighbour_devs = $::proxmox::config::neighbour_devs
+
+    if $::proxmox::config::package_versions['ploop'] {
+        $is_ploop = true
+    } else {
+        $is_ploop = false
+    }
     
     file { '/etc/vz':
         ensure => directory,
