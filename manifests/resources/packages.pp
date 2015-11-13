@@ -79,6 +79,15 @@ class proxmox::resources::packages {
     package { 'proxmox-ve-2.6.32':
         ensure => $package_versions['proxmox-ve-2.6.32']
     }
+
+    if ($package_versions['ploop']) {
+        package { 'ploop':
+            ensure => $package_versions['ploop'],
+            before => [ 
+                Package['vzctl']
+            ]
+        }        
+    }
     
     if($package_versions['pve-database']) {
         package { 'pve-database':
