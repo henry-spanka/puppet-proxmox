@@ -9,9 +9,6 @@ class proxmox::resources::packages {
     package { 'tar':
         ensure => installed
     }
-    package { 'openssh-client':
-        ensure => installed,
-    }
     
     package { 'pve-firmware':
         ensure => $package_versions['pve-firmware']
