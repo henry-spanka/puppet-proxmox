@@ -34,11 +34,7 @@ class proxmox::params {
                 ensure => present
             }
         },
-        'kvm' => {
-            'kvm-intel' => { # Does not work in KVM containers but that's expected
-                ensure => present
-            }
-        }
+        'kvm' => {}
     }
     $install_kernel_headers         = true
     $auto_kernel_reboot             = true
