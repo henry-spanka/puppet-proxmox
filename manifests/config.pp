@@ -16,6 +16,11 @@ class proxmox::config (
     $neighbors_configuration        = {},
     $source_ct_ip_interface         = undef,
     $neighbour_devs                 = {},
-    $backup_configuration           = {}
+    $backup_configuration           = {},
+    $ssh_manage                     = undef,
+    $ssh_client_options             = {},
+    $ssh_server_options             = {},
+    $ssh_storeconfigs_enabled       = undef,
+    $ssh_version                    = undef
 ) {
 }

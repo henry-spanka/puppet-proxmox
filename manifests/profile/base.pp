@@ -13,4 +13,10 @@ class proxmox::profile::base {
   # all nodes need the Proxmox repositories
   class { '::proxmox::resources::repo': }
 
+  if ($::proxmox::config::ssh_manage) {
+    class { '::proxmox::resources::ssh':
+      require => Class['::proxmox::resources::repo']
+    }
+  }
+
 }

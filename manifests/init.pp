@@ -27,7 +27,12 @@ class proxmox (
     $neighbors_configuration        = $proxmox::params::neighbors_configuration,
     $source_ct_ip_interface         = $proxmox::params::source_ct_ip_interface,
     $neighbour_devs                 = $proxmox::params::neighbour_devs,
-    $backup_configuration           = $proxmox::params::backup_configuration
+    $backup_configuration           = $proxmox::params::backup_configuration,
+    $ssh_manage                     = $proxmox::params::ssh_manage,
+    $ssh_client_options             = $proxmox::params::ssh_client_options,
+    $ssh_server_options             = $proxmox::params::ssh_server_options,
+    $ssh_storeconfigs_enabled       = $proxmox::params::ssh_storeconfigs_enabled,
+    $ssh_version                    = $proxmox::params::ssh_version
 ) inherits proxmox::params {
     
     $package_versions_merged = merge($proxmox::params::package_versions, $package_versions)
@@ -64,7 +69,15 @@ class proxmox (
     validate_hash($neighbour_devs)
     validate_re($neighbour_devs[mode], '^detect$|^list$|^all$')
     validate_hash($backup_configuration)
-    
+
+    validate_bool($ssh_manage)
+    if ($ssh_manage) {
+        validate_hash($ssh_client_options)
+        validate_hash($ssh_server_options)
+        validate_bool($ssh_storeconfigs_enabled)
+        validate_string($ssh_version)
+    }
+
     if ($::osfamily != 'Debian') {
         fail('Only Debian 7(wheezy) supported')
     }
@@ -86,6 +99,11 @@ class proxmox (
       neighbors_configuration       => $neighbors_configuration,
       source_ct_ip_interface        => $source_ct_ip_interface,
       neighbour_devs                => $neighbour_devs,
-      backup_configuration          => $backup_configuration
+      backup_configuration          => $backup_configuration,
+      ssh_manage                    => $ssh_manage,
+      ssh_client_options            => $ssh_client_options,
+      ssh_server_options            => $ssh_server_options,
+      ssh_storeconfigs_enabled      => $ssh_storeconfigs_enabled,
+      ssh_version                   => $ssh_version
     }
 }

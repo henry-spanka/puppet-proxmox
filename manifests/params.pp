@@ -113,4 +113,9 @@ class proxmox::params {
         mode => 'detect'
     } # for example {mode: list ['vmbr1']}
     $backup_configuration           = {}
+    $ssh_manage                     = true
+    $ssh_client_options             = {}
+    $ssh_server_options             = {}
+    $ssh_storeconfigs_enabled       = true
+    $ssh_version                    = 'latest'
 }
