@@ -34,7 +34,11 @@ class proxmox::params {
                 ensure => present
             }
         },
-        'kvm' => {}
+        'kvm' => {
+	    'nf_conntrack_proto_gre' => {
+		ensure => present
+	    }
+	}
     }
     $install_kernel_headers         = true
     $auto_kernel_reboot             = true
