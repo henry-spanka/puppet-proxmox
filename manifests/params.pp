@@ -13,6 +13,7 @@ class proxmox::params {
         'resource-agents-pve' => '3.9.2-4',
         'libpve-access-control' => '3.0-16',
         'libpve-storage-perl' => '3.0-33',
+	'pve-firewall' => '1.0-21',
         'pve-qemu-kvm' => '2.2-10',
         'vzquota' => '3.1-2',
         'vzprocps' => '2.0.11-2',

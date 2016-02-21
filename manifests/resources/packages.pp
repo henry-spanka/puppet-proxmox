@@ -49,6 +49,9 @@ class proxmox::resources::packages {
     package { 'libpve-storage-perl':
         ensure => $package_versions['libpve-storage-perl']
     } ->
+    package { 'pve-firewall':
+	ensure => $package_versions['pve-firewall']
+    } ->
     package { 'pve-qemu-kvm':
         ensure => $package_versions['pve-qemu-kvm']
     } ->
