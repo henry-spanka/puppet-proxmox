@@ -33,10 +33,16 @@ class proxmox::params {
         'openvz' => {
             'tun' => {
                 ensure => present
-            }
+            },
+	    'mlx4_en' => {
+		ensure => present
+	    }
         },
         'kvm' => {
 	    'nf_conntrack_proto_gre' => {
+		ensure => present
+	    },
+	    'mlx4_en' => {
 		ensure => present
 	    }
 	}
